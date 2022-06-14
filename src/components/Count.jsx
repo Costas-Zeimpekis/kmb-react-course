@@ -1,8 +1,17 @@
+import React from "react";
 import { Component } from "react";
 import AddButton from "./AddButton";
 import NoCars from "./NoCars";
 class Count extends Component {
   state = {
+    users: [
+      {id: 1, name: "costas"},
+      {id: 2, name: "bob"},
+      {id: 3, name: "john"},
+      {id: 4, name: "nikitas"},
+  ],
+
+  showParagraph: false,
     cars: 0,
     address: {
       str: 12,
@@ -34,10 +43,29 @@ class Count extends Component {
     }));
   };
 
+  handleSwitchClick = () => {
+    // this.setState((prevState)=> ({
+    //     showParagraph: !prevState.showParagraph,
+    // }));
+
+    this.setState({
+        showParagraph: !this.state.showParagraph,
+    })
+}
+
   render() {
     return (
       <div>
         <NoCars cars={this.state.cars} />
+        <div>
+          <ul>
+            {this.state.users.map(({id, name}) => (
+                <li>{name}</li>
+            ))}
+          </ul>
+            {this.state.showParagraph && <p>show</p>}
+            <button onClick={this.handleSwitchClick}>Switch</button>
+        </div>
         <AddButton onAddCarClick={this.handleAddCarsClick} />
       </div>
     );
