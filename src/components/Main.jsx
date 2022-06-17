@@ -1,16 +1,14 @@
-import Count from "./Count";
+import { Routes, Route } from "react-router-dom";
+import About from "./About";
 import UserForm from "./UserForm";
-import Clock from "./Clock";
-import Car from "./Car";
 
 function Main({ description }) {
   return (
     <main>
-      <p>{description}</p>
-      <Count />
-      <UserForm />
-      <Clock />
-      <Car />
+      <Routes>
+        <Route path="/" element={<UserForm />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
     </main>
   );
 }
